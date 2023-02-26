@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./styl.css"> 
+   <title>Add products</title>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <img src="./Futuristic Modern Black and White Logo (1).png" alt="">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="" class="active">Home</a>
+                    </li>
+                    <li>
+                        <a href="showpost.html">Products</a>
+                    </li>
+                    <li>
+                        <a href="post.html">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="">About</a>
+                    </li>
+                    <li>
+                        <a href="">product</a>
+                    </li>
+                </ul>
+                <div class="login-signup">
+                    <a href="">Login</a> 
+                     <a href="">Signup</a>
+                </div>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="login-signup">
+                <a href="./log/log.html">Login</a> <a href="./sin/sin.html">Signup</a>
+            </div>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+    <div id="container">
+<h1>Notes page</h1>
+
+<input type="text" id="title" placeholder="product titel..">
+<input type="text" id="content" placeholder="product content..">
+<input type="number" id="price" placeholder="product price..">
+<input type="text" id="author" placeholder="product author">
+<input type="text" id="img" placeholder="img url ">
+
+<button onclick="onAdd()">add on</button>
+    </div>
+</body>
+</html>
+<script>
+const onAdd=()=>{
+    const payload={
+  
+        titel:document.getElementById("title").value,
+        content:document.getElementById("content").value,
+        price:document.getElementById("price").value,
+        author:document.getElementById("author").value,
+        img:document.getElementById("img").value,
+
+    }
+    fetch("https://spotless-beret-bull.cyclic.app/create",{
+        method:"POST",
+        headers:{
+            "Content-type":"application/json",
+            "Authorization":localStorage.getItem("token")
+        },
+        body:JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res=>{
+        console.log(res)
+        localStorage.setItem("token",res.token)
+    })
+    .catch(err=>console.log(err))
+
+}
+</script>

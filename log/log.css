@@ -1,0 +1,46 @@
+#container{
+    border: solid px rebeccapurple;
+    width: 20%;
+    height: 40%;
+    margin-left: 40%;
+}
+.but{
+    
+    background-color:green;
+    padding: 5%;
+    margin-top: 5%;
+    padding-right: 65%;
+    border: solid black 1px;
+    text-align: center;
+}
+.but:hover{
+    background-color: azure;
+    clear: #e72c2c;
+}
+.img img{
+    width: 100%;
+
+}
+.img{
+    border: solid red px;
+    width: 15%;
+    margin-left: 40%;
+}
+#name{
+    padding: 5%;
+    margin-top: 5%;
+    padding-right: 20%;
+    border: solid black 1px;
+}
+#email{
+    padding: 5%;
+    margin-top: 5%;
+    padding-right: 20%;
+    border: solid black 1px;
+}
+#pass{
+    margin-top: 5%;
+    padding: 5%;
+    padding-right: 20%;
+    border: solid black 1px;
+}

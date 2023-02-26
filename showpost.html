@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="show.css" />
+    <link rel="stylesheet" href="./styl.css">
+    <title>Products</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+          <div class="logo">
+              <img src="./Futuristic Modern Black and White Logo (1).png" alt="">
+          </div>
+          <nav>
+              <ul>
+                  <li>
+                      <a href="" class="active">Home</a>
+                  </li>
+                  <li>
+                      <a href="showpost.html">Products</a>
+                  </li>
+                  <li>
+                      <a href="post.html">Pricing</a>
+                  </li>
+                  <li>
+                      <a href="">About</a>
+                  </li>
+                  <li>
+                      <a href="">product</a>
+                  </li>
+              </ul>
+              <div class="login-signup">
+                  <a href="">Login</a> 
+                   <a href="">Signup</a>
+              </div>
+          </nav>
+      </div>
+      <div class="header-right">
+          <div class="login-signup">
+              <a href="./log/log.html">Login</a> <a href="./sin/sin.html">Signup</a>
+          </div>
+          <div class="hamburger">
+              <div></div>
+              <div></div>
+              <div></div>
+          </div>
+      </div>
+  </header>
+  <br><br><br>
+    <div class="container">
+    <table class="table ">
+    <thead class="table-dark">
+      <tr>
+        <th scope>Title</th>
+        <th scope>Description</th>
+        <th scope>Price</th>
+        <th scope>Auther</th>
+        <th scope>img</th>
+      </tr>
+    </thead>
+    <tbody id="table_body">
+
+    </tbody>
+</table>
+</div>
+    </div>
+  </body>
+</html>
+<script>
+  fetch("https://spotless-beret-bull.cyclic.app/products", {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    },
+  })
+    .then((data) => {
+      return data.json();
+    })
+    .then((objdata) => {
+      console.log(objdata);
+      mydata(objdata)
+      let tdata = "";
+      objdata.map((values) => {
+        tdata += `<tr>
+    <td>${values.titel}</td>
+    <td>${values.content}</td>
+    <td>${values.author}</td>
+    <td>${values.price}</td>
+    <td><img src="${values.img}"/</td>
+</tr>
+            `;
+      });
+      document.getElementById("table_body").innerHTML = tdata;
+    });
+
+  function mydata(data) {
+    let mydiv = document.getElementById("cart") || "";
+    data.map((item) => {
+      let div = document.createElement("div");
+      let text = document.createElement("p");
+      text.innerText = item.author;
+      div.append(text);
+    });
+  }
+
+  // const getData=()=>{
+  //     fetch("http://localhost:8080/products",{
+  //         headers:{
+  //             "Authorization":localStorage.getItem("token")
+  //         },
+  //     }).then(res=>res.json())
+  //     .then((objdata)=>{
+  //         console.log()
+
+  //     })
+
+  //     .catch(err=>console.log(err))
+  // }
+  // getData()
+</script>

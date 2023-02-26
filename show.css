@@ -1,0 +1,17 @@
+.container{
+    border: solid black px;
+}
+.table{
+    border: solid red px;
+    width: 100%;
+}
+.table-dark{
+    background-color: aqua;
+}
+#table_body{
+   border:  solid 2px blue;
+}
+#table_body img{width: 100px;}
+.table_body th td {
+    border: 1px solid black;
+ }

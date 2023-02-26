@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="log.css">
+    <link rel="stylesheet" href="../styl.css">
+    <title>login</title>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <img src="./Futuristic Modern Black and White Logo (1).png" alt="">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../index.html" class="active">Home</a>
+                    </li>
+                    <li>
+                        <a href="../showpost.html">Products</a>
+                    </li>
+                    <li>
+                        <a href="../post.html">create</a>
+                    </li>
+                    <li>
+                        <a href="../About.html">About</a>
+                    </li>
+                    
+                </ul>
+                <div class="login-signup">
+                    <a href="./log.html">Login</a> 
+                     <a href="../sin/sin.html">Signup</a>
+                </div>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="login-signup">
+                <a href="./log.html">Login</a> <a href="./sin/sin.html">Signup</a>
+            </div>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+    <div class="img">
+        <img src="../Futuristic Modern Black and White Logo (1).png" alt="">
+    </div>
+    <div id="container">
+<h1>LOGIN </h1>
+
+<input type="text" id="email" placeholder="email">
+<input type="password" id="pass" placeholder="password"><br><br>
+<button onclick="logFun()">Log in</button>
+<br><br>
+<a href="../sin/sin.html">SIGN UP</a>
+    </div>
+</body>
+
+</html>
+<script>
+const logFun=()=>{
+    const payload={
+  
+        email:document.getElementById("email").value,
+        pass:document.getElementById("pass").value
+    }
+    fetch("https://spotless-beret-bull.cyclic.app/user/login",{
+        method:"POST",
+        headers:{
+            "Content-type":"application/json"
+        },
+        body:JSON.stringify(payload)
+    }).then(res=>res.json())
+    .then(res=>{
+        alert("logged in")
+        console.log(res)
+        localStorage.setItem("token",res.token)
+    })
+    .catch(err=>console.log(err))
+
+}
+</script>
